@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SmartStock AI - Intelligent Inventory Management with Predictive Analytics">
+    <meta name="keywords" content="inventory, management, AI, predictions, bill scanning, stock tracking">
+    <meta name="author" content="SmartStock AI Team">
+    <title>SmartStock AI - Intelligent Inventory Management</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="main-header">
+            <div class="header-content">
+                <h1>🎯 SmartStock AI</h1>
+                <p class="subtitle">Intelligent Inventory Management with Predictive Analytics</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-secondary" id="exportBtn">📊 Export Data</button>
+                <button class="btn-secondary" id="settingsBtn">⚙️ Settings</button>
+            </div>
+        </header>
+
+        <!-- Statistics Dashboard -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <div class="stat-value" id="totalItems">0</div>
+                <div class="stat-label">Total Items</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-value" id="lowStock">0</div>
+                <div class="stat-label">Low Stock Alerts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-value" id="totalValue">$0</div>
+                <div class="stat-label">Total Value</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-value" id="predictedGrowth">+0%</div>
+                <div class="stat-label">Predicted Growth</div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Inventory Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>📦 Current Inventory</h2>
+                    <div class="card-actions">
+                        <input type="text" class="search-box" id="searchInventory" placeholder="Search items...">
+                        <select class="filter-select" id="filterCategory">
+                            <option value="">All Categories</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Food">Food & Beverages</option>
+                            <option value="Home">Home & Garden</option>
+                            <option value="Sports">Sports & Outdoors</option>
+                            <option value="Beauty">Beauty & Personal Care</option>
+                            <option value="Books">Books & Media</option>
+                            <option value="Toys">Toys & Games</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inventory-grid" id="inventoryList"></div>
+            </div>
+
+            <!-- Bill Scanner Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>📸 Bill Scanner</h2>
+                    <span class="badge">AI-Powered</span>
+                </div>
+                <div class="scan-area" id="scanArea">
+                    <div class="scan-icon">📄</div>
+                    <h3>Drop bill/receipt here or click to upload</h3>
+                    <p>Supports: JPG, PNG, PDF</p>
+                    <label for="fileInput" class="upload-btn">Choose File</label>
+                    <input type="file" id="fileInput" accept="image/*,.pdf" multiple>
+                </div>
+                <div class="scanned-items" id="scannedItems"></div>
+            </div>
+        </div>
+
+        <!-- Add Item & Predictions Grid -->
+        <div class="main-grid">
+            <!-- Add Item Form -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>➕ Add New Item</h2>
+                </div>
+                <form class="add-item-form" id="addItemForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName">Product Name</label>
+                            <input type="text" id="productName" placeholder="Enter product name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productSKU">SKU (Optional)</label>
+                            <input type="text" id="productSKU" placeholder="SKU-12345">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productCategory">Category</label>
+                            <select id="productCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Food">Food & Beverages</option>
+                                <option value="Home">Home & Garden</option>
+                                <option value="Sports">Sports & Outdoors</option>
+                                <option value="Beauty">Beauty & Personal Care</option>
+                                <option value="Books">Books & Media</option>
+                                <option value="Toys">Toys & Games</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productQuantity">Quantity</label>
+                            <input type="number" id="productQuantity" min="0" placeholder="0" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productPrice">Price per Unit ($)</label>
+                            <input type="number" id="productPrice" step="0.01" min="0" placeholder="0.00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productReorder">Reorder Level</label>
+                            <input type="number" id="productReorder" min="0" placeholder="10" value="10">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">Add to Inventory</button>
+                </form>
+            </div>
+
+            <!-- Predictions Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>📊 Sales Predictions</h2>
+                    <span class="badge badge-success">Seasonal Trends</span>
+                </div>
+                <div class="prediction-chart" id="predictionChart"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p>&copy; 2024 SmartStock AI. Award-Winning Inventory Management System.</p>
+            <p>Made with ❤️ for businesses worldwide</p>
+        </footer>
+    </div>
+
+    <!-- Modal for Settings -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚙️ Settings</h2>
+                <button class="modal-close" id="closeSettings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-group">
+                    <h3>Display Preferences</h3>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="darkMode"> Enable Dark Mode
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="showAnimations" checked> Enable Animations
+                    </label>
+                </div>
+                <div class="settings-group">
+                    <h3>Notifications</h3>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="lowStockAlerts" checked> Low Stock Alerts
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="seasonalAlerts" checked> Seasonal Trend Alerts
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="resetData">Reset All Data</button>
+                <button class="btn-primary" id="saveSettings">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/inventory.js"></script>
+    <script src="js/scanner.js"></script>
+    <script src="js/predictions.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+contribu# Contributing to SmartStock AI
+
+First off, thank you for considering contributing to SmartStock AI! 🎉
+
+## Code of Conduct
+
+This project and everyone participating in it is governed by our Code of Conduct. By participating, you are expected to uphold this code.
+
+## How Can I Contribute?
+
+### Reporting Bugs
+
+Before creating bug reports, please check existing issues. When creating a bug report, include:
+
+- **Clear title and description**
+- **Steps to reproduce**
+- **Expected behavior**
+- **Actual behavior**
+- **Screenshots** (if applicable)
+- **Browser and version**
+
+### Suggesting Enhancements
+
+Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion, include:
+
+- **Clear title and description**
+- **Use case** - why would this be useful?
+- **Proposed solution**
+- **Alternative solutions** you've considered
+
+### Pull Requests
+
+1. Fork the repo and create your branch from `main`
+2. If you've added code, test it thoroughly
+3. Ensure your code follows the existing style
+4. Write clear commit messages
+5. Include screenshots for UI changes
+
+## Development Guidelines
+
+### Code Style
+
+- Use **2 spaces** for indentation
+- **Semicolons** are required
+- Use **camelCase** for variables and functions
+- Use **PascalCase** for classes
+- Add **comments** for complex logic
+
+### Commit Messages
+
+- Use present tense ("Add feature" not "Added feature")
+- Use imperative mood ("Move cursor to..." not "Moves cursor to...")
+- Limit first line to 72 characters
+- Reference issues and pull requests
+
+Example:
+```
+Add seasonal trend visualization
+
+- Implement chart component
+- Add seasonal multipliers
+- Update prediction algorithm
+
+Fixes #123
+```
+
+### Testing
+
+Test your changes in:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers
+
+## Project Structure
+
+```
+smartstock-ai/
+├── index.html       # Main app (HTML, CSS, JS all-in-one)
+├── README.md        # Documentation
+├── CONTRIBUTING.md  # This file
+└── LICENSE          # MIT License
+```
+
+## Feature Requests
+
+We love feature requests! Before submitting:
+
+1. Check if it's already requested
+2. Consider if it fits the project scope
+3. Provide detailed use cases
+4. Be open to discussion
+
+## Questions?
+
+Feel free to open an issue with the tag `question`.
+
+Thank you for contributing! 🚀
