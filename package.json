@@ -1,0 +1,18 @@
+{
+“name”: “hisaab-ai”,
+“version”: “1.0.0”,
+“description”: “AI-Driven Inventory Management for Indian SMEs”,
+“main”: “index.html”,
+“scripts”: {
+“start”: “npx serve .”,
+“dev”: “npx serve .”
+},
+“keywords”: [
+“inventory”,
+“sme”,
+“ai”,
+“hackathon”
+],
+“author”: “Mind Mesh Team”,
+“license”: “MIT”
+}
